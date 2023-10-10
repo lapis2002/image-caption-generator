@@ -5,7 +5,6 @@ on:
     branches: 
     - dev
     - main
-    - ansible-setup
 
 env:
   IMAGE_NAME: ${{ github.event.repository.name }}
