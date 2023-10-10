@@ -4,7 +4,7 @@ on:
   push:
     branches: 
     - main
-    - test_model
+    - dev
 
 env:
   IMAGE_NAME: ${{ github.event.repository.name }}
