@@ -5,6 +5,7 @@ on:
     branches: 
     - dev
     - main
+    - ansible-setup
 
 env:
   IMAGE_NAME: ${{ github.event.repository.name }}
@@ -31,4 +32,6 @@ jobs:
         uses: docker/build-push-action@v5
         with:
           push: true
-          tags: ${{ env.LATEST_TAG }}
+          tags: 
+          - ${{ env.LATEST_TAG }}
+          - ${{ github.run_number }}
