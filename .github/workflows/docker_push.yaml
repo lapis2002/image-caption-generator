@@ -32,4 +32,4 @@ jobs:
         uses: docker/build-push-action@v5
         with:
           push: true
-          tags: [${{ env.LATEST_TAG }}, ${{ github.run_number }}]
+          tags: [${{ env.LATEST_TAG }}, lst]
