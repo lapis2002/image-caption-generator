@@ -1,5 +1,5 @@
 apiVersion: v2
-name: ocr
+name: image-caption
 description: Helm Chart for Image Caption Generator
 
 # A chart can be `application` or `library`,

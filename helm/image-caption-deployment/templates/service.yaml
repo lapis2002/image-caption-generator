@@ -4,6 +4,7 @@ metadata:
   name: {{ .Release.Name }}
   labels:
     app: {{ .Release.Name }}
+    operated-prometheus: "true"
   namespace: model-serving
 spec:
   selector:
