@@ -4,7 +4,6 @@ metadata:
   name: {{ .Release.Name }}
   labels:
     app: {{ .Release.Name }}
-    operated-prometheus: "true"
   namespace: model-serving
 spec:
   selector:
@@ -13,4 +12,4 @@ spec:
     - port: 30000
       protocol: TCP
       targetPort: 30000
-  type: LoadBalancer
+  type: NodePort

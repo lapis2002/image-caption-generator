@@ -29,20 +29,20 @@ provider "google" {
 #   uniform_bucket_level_access = true
 # }
 
-# // Google Compute Engine
+// Google Compute Engine
 # resource "google_compute_instance" "vm_instance" {
 #   name         = "terraform-instance"
 #   machine_type = "e2-micro"
 #   zone         = "us-central1-c"
   
-#   // This instances use ubuntu image
+  // This instances use ubuntu image
 #   boot_disk {
 #     initialize_params {
 #       image = "projects/ubuntu-os-cloud/global/images/ubuntu-2204-jammy-v20230727"
 #     }
 #   }
 
-#   // Default network for the instance
+  // Default network for the instance
 #   network_interface {
 #     network = "default"
 #     access_config {}
@@ -53,13 +53,13 @@ provider "google" {
 resource "google_container_cluster" "primary" {
   name     = "${var.project_id}-gke"
   location = var.region
- 
+
   // Enabling Autopilot for this cluster
   enable_autopilot = true
   
-  # // Enable Istio (beta)
-  # // https://registry.terraform.io/providers/hashicorp/google/latest/docs/resources/container_cluster#nested_istio_config
-  # // not yet supported on Autopilot mode
+  // Enable Istio (beta)
+  // https://registry.terraform.io/providers/hashicorp/google/latest/docs/resources/container_cluster#nested_istio_config
+  // not yet supported on Autopilot mode
   # addons_config {
   #   istio_config {
   #     disabled = false

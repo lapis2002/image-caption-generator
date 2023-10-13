@@ -1,0 +1,20 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: {{ .Release.Name }}-nginx-ingress
+  namespace: monitoring
+  annotations:
+    kubernetes.io/ingress.class: "nginx" # which can be replaced by gce, gce-internal or istio
+spec:
+  rules:
+  - host: icg.example.com
+    http:
+      paths:
+      - path: /prometheus
+        pathType: Prefix 
+        backend:
+          service:
+            name: {{ .Release.Name }}-service
+            port:
+              number: 32000
+        
