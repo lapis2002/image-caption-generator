@@ -67,3 +67,18 @@ resource "google_container_cluster" "primary" {
   #   }
   # }
 }
+
+resource "google_compute_firewall" "default" {
+  name    = "firewall-rules"
+  network = "${var.self_link}"
+  description = "Allow ports for model deployment, and monitoring (prometheus, grafana)"
+
+  allow {
+    protocol = "tcp"
+    ports    = ["30000", "30300", "32000"]
+  }
+
+  direction = "INGRESS"
+  
+  source_tags = ["web"]
+}
