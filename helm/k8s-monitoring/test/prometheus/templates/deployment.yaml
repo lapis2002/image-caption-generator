@@ -1,0 +1,29 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ .Release.Name }}-deployment
+  namespace: monitoring
+  labels:
+    app: {{ .Release.Name }}
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: {{ .Release.Name }}
+  serviceAccountName: prometheus
+  containers:
+  - image: {{ .Values.image.repository }}:{{ .Values.image.tag }}
+    name: {{ .Release.Name }}
+    command: 
+    - "prometheus"
+    args:
+    - "--config.file=/config/prometheus.yaml"
+    ports:
+    - containerPort: 9090
+    volumeMounts:
+    - mountPath: "/config"
+      name: {{ .Release.Name }}-config
+  volumes:
+  - name: {{ .Release.Name }}-config
+    configMap:
+      name: {{ .Release.Name }}-config

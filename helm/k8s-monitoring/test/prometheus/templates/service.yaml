@@ -6,12 +6,12 @@ metadata:
   annotations:
       prometheus.io/scrape: 'true'
       prometheus.io/port:   '9090'
-
+  
 spec:
-  selector:
-    app: {{ .Release.Name }}-server
+  selector: 
+    app: {{ .Release.Name }}
   type: NodePort  
   ports:
     - port: 8080
-      targetPort: 9090
+      targetPort: 9090 
       nodePort: 30300

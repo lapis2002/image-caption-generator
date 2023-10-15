@@ -55,8 +55,10 @@ resource "google_container_cluster" "primary" {
   location = var.region
 
   // Enabling Autopilot for this cluster
-  enable_autopilot = true
+  # enable_autopilot = true
   
+  remove_default_node_pool = true
+  initial_node_count       = 1
   // Enable Istio (beta)
   // https://registry.terraform.io/providers/hashicorp/google/latest/docs/resources/container_cluster#nested_istio_config
   // not yet supported on Autopilot mode
@@ -66,6 +68,18 @@ resource "google_container_cluster" "primary" {
   #     auth     = "AUTH_NONE"
   #   }
   # }
+}
+
+resource "google_container_node_pool" "primary_preemptible_nodes" {
+  name       = "node-pool"
+  location   = var.region
+  cluster    = google_container_cluster.primary.name
+  node_count = 1
+
+  node_config {
+    preemptible  = true
+    machine_type = "n2-standard-2" # 2 CPU and 8 GB RAM
+  }
 }
 
 resource "google_compute_firewall" "default" {
