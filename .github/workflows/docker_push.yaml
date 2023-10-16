@@ -5,11 +5,11 @@ on:
     branches: 
     - dev
     - main
+    - setup-model-api
 
 env:
   IMAGE_NAME: ${{ github.event.repository.name }}
   LATEST_TAG: ${{ secrets.DOCKERHUB_USERNAME }}/image-caption-generator-api:latest
-  NUMBER_TAG: ${{ secrets.DOCKERHUB_USERNAME }}/image-caption-generator-api:${{ github.run_number }}
 
 jobs:
   build_and_push:
@@ -32,4 +32,4 @@ jobs:
         uses: docker/build-push-action@v5
         with:
           push: true
-          tags: ${{ env.LATEST_TAG }}, ${{ env.LATEST_TAG }} 
+          tags: ${{ env.LATEST_TAG }}
