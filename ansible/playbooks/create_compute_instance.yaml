@@ -26,19 +26,21 @@
                 type: ONE_TO_ONE_NAT
         state: present # change to absent to delete the instance
 
-    - name: Create inbound firewall rule for port 30000
+    - name: Create inbound firewall rule for port 30000, 30300
       gcp_compute_firewall:
-        name: allow-port-30000
+        name: allow-port-30000-30300-32000
         network:
           selfLink: global/networks/default
         allowed:
           - ip_protocol: TCP
             ports:
               - 30000
+              - 30300
+              - 32000
         source_ranges:
           - 0.0.0.0/0 # Allow traffic from any source (use a more specific source range for security)
         direction: INGRESS # Direction from outside to inside, EGRESS is the opposite direction
-        description: Allow incoming traffic on port 30000
+        description: Allow incoming traffic on port 30000 (app-deployment), 30300 (prometheus), 32000 (grafana)
         project: mle-course-399400
         auth_kind: serviceaccount
         service_account_file: ../secrets/mle-course-399400-0f4aa7371919.json
