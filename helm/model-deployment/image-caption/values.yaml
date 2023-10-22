@@ -1,3 +1,8 @@
+# image:
+#   repository: hduong202/image-caption-generator-api
+#   tag: latest
+#   pullPolicy: Always # Should be IfNotPresent when using tag number and Always if latest
+
 image:
   repository: hduong202/image-caption-generator-api
   tag: latest
