@@ -8,9 +8,5 @@ MLOps for Image Caption Generator.
 - install model
 - update /etc/hosts
 
-```
+https://fabianlee.org/2022/07/02/prometheus-exposing-prometheus-grafana-as-ingress-for-kube-prometheus-stack/
 
-ACCOUNT=$(gcloud info --format='value(config.account)')
-kubectl create clusterrolebinding prometheus-cluster-admin \
-    --clusterrole cluster-admin \
-    --user $ACCOUNT```
