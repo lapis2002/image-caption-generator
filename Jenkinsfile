@@ -26,7 +26,7 @@ pipeline {
         //             echo 'Building image for deployment..'
         //             def imageName = "${registry}:latest.${BUILD_NUMBER}"
 
-        //             dockerImage = docker.build(imageName, "--file Dockerfile ${buildArgs} .")
+        //             dockerImage = docker.build(imageName, "--file Dockerfile")
         //             echo 'Pushing image to dockerhub..'
         //             docker.withRegistry( '', registryCredential ) {
         //                 dockerImage.push()
@@ -53,7 +53,7 @@ pipeline {
                 kubernetes {
                     containerTemplate {
                         name 'helm' // Name of the container to be used for helm upgrade
-                        image 'fullstackdatascience/jenkins-k8s:latest' // The image containing helm
+                        image 'fullstackdatascience/jenkins-k8s:lts' // The image containing helm
                     }
                 }
             }
