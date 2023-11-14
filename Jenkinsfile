@@ -24,7 +24,7 @@ pipeline {
             steps {
                 script {
                     echo 'Building image for deployment..'
-                    def imageName = "${registry}:v1.${BUILD_NUMBER}"
+                    def imageName = "${registry}:latest.${BUILD_NUMBER}"
 
                     dockerImage = docker.build(imageName, "--file Dockerfile ${buildArgs} .")
                     echo 'Pushing image to dockerhub..'
