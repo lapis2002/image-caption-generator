@@ -61,8 +61,8 @@ pipeline {
                 script {
                     steps
                     container('helm') {
-                        sh("helm upgrade --install app --set image.repository=${registry} \
-                        --set image.tag=v1.${BUILD_NUMBER} ./helm_charts/app --namespace model-serving")
+                        sh("helm upgrade --install  image-caption-deployment --set image.repository=${registry} \
+                        --set image.tag=v1.${BUILD_NUMBER} ./helm_charts/model-deployment --namespace model-serving")
                     }
                 }
             }
