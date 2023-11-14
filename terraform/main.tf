@@ -85,11 +85,11 @@ resource "google_container_node_pool" "primary_preemptible_nodes" {
 resource "google_compute_firewall" "default" {
   name    = "firewall-rules"
   network = "${var.self_link}"
-  description = "Allow ports for model deployment, and monitoring (prometheus, grafana)"
+  description = "Allow ports for model deployment"
 
   allow {
     protocol = "tcp"
-    ports    = ["30000", "30300", "32000"]
+    ports    = ["30000"]
   }
 
   direction = "INGRESS"
