@@ -1,10 +1,12 @@
 name: Build and Push Docker Image to Docker Hub
 
-# on:
-#   push:
-#     branches: 
-#     - dev
-#     - main
+on:
+  # push:
+  #   branches: 
+  #   - dev
+  #   - main
+  # manually triggered
+  workflow_dispatch:
 
 env:
   IMAGE_NAME: ${{ github.event.repository.name }}
