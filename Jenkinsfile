@@ -20,20 +20,6 @@ pipeline {
         //     }
         // }
 
-        // stage('Build image') {
-        //     steps {
-        //         script {
-        //             echo 'Building image for deployment..'
-        //             def imageName = "${registry}:latest.${BUILD_NUMBER}"
-
-        //             dockerImage = docker.build(imageName, "--file Dockerfile")
-        //             echo 'Pushing image to dockerhub..'
-        //             docker.withRegistry( '', registryCredential ) {
-        //                 dockerImage.push()
-        //             }
-        //         }
-        //     }
-        // }
         stage('Build') {
             steps {
                 script {

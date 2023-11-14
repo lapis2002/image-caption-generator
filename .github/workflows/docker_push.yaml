@@ -1,10 +1,10 @@
 name: Build and Push Docker Image to Docker Hub
 
-on:
-  push:
-    branches: 
-    - dev
-    - main
+# on:
+#   push:
+#     branches: 
+#     - dev
+#     - main
 
 env:
   IMAGE_NAME: ${{ github.event.repository.name }}
