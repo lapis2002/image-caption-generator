@@ -20,16 +20,29 @@ pipeline {
         //     }
         // }
 
-        stage('Build image') {
+        // stage('Build image') {
+        //     steps {
+        //         script {
+        //             echo 'Building image for deployment..'
+        //             def imageName = "${registry}:latest.${BUILD_NUMBER}"
+
+        //             dockerImage = docker.build(imageName, "--file Dockerfile ${buildArgs} .")
+        //             echo 'Pushing image to dockerhub..'
+        //             docker.withRegistry( '', registryCredential ) {
+        //                 dockerImage.push()
+        //             }
+        //         }
+        //     }
+        // }
+        stage('Build') {
             steps {
                 script {
                     echo 'Building image for deployment..'
-                    def imageName = "${registry}:latest.${BUILD_NUMBER}"
-
-                    dockerImage = docker.build(imageName, "--file Dockerfile ${buildArgs} .")
+                    dockerImage = docker.build registry + ":$BUILD_NUMBER" 
                     echo 'Pushing image to dockerhub..'
                     docker.withRegistry( '', registryCredential ) {
                         dockerImage.push()
+                        dockerImage.push('latest')
                     }
                 }
             }
