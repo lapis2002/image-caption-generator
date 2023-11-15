@@ -13,7 +13,7 @@
 https://github.com/lapis2002/image-caption-generator/assets/47402970/6d94c4e8-c7f6-487b-8504-4bcc13651eb7
 
 
-### Monitoring in Grafana
+### Metrics Monitoring in Grafana
 
 https://github.com/lapis2002/image-caption-generator/assets/47402970/22280fd9-3238-4659-85f3-f88656102bc4
 
