@@ -92,7 +92,6 @@ ansible-playbook ansible/playbooks/create_compute_instance.yaml
   - Follow the instruction to log in into Jenkins.
   - The password can be retrieved by
     ```
-
     # inside GCE instance
     sudo docker exec -ti jenkins bash
     cat /var/jenkins_home/secrets/initialAdminPassword
@@ -141,4 +140,11 @@ ansible-playbook ansible/playbooks/create_compute_instance.yaml
 
 ### API
 
+
+https://github.com/lapis2002/image-caption-generator/assets/47402970/6d94c4e8-c7f6-487b-8504-4bcc13651eb7
+
+
 ### Grafana
+
+https://github.com/lapis2002/image-caption-generator/assets/47402970/22280fd9-3238-4659-85f3-f88656102bc4
+
