@@ -2,7 +2,9 @@
 
 ## System Architecture
 ![](assets/images/deployment-diagram.png)
-
+* Image captioning generator using Hugging Face’s Vision Transformer ViT and Vision Encoder Decoder Models, integrating API endpoints via FastAPI, and containerized the applicaton using Docker.
+* The Model is deployed on Google Kubernetes Engine (GKE), and monitored using Prometheus and Grafana.
+* **CI/CD pipeline**: Jenkin is installed on GCE through Ansible to automate image pushes to Docker Hub and model deployment on GKE.
 ## Demo
 
 ### API
