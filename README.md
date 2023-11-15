@@ -8,16 +8,10 @@
 ## Demo
 
 ### API
-
-
-https://github.com/lapis2002/image-caption-generator/assets/47402970/6d94c4e8-c7f6-487b-8504-4bcc13651eb7
-
-![API Demo](assets/videos/api_demo.gif)
-
+[Screencast from 2023-11-14 11:22:46 PM.webm](https://github.com/lapis2002/image-caption-generator/assets/47402970/342381fc-017c-4191-8b1b-0cce3993b792)
 
 ### Monitoring in Grafana
-
-https://github.com/lapis2002/image-caption-generator/assets/47402970/22280fd9-3238-4659-85f3-f88656102bc4
+[Screencast from 2023-11-14 11:31:09 PM.webm](https://github.com/lapis2002/image-caption-generator/assets/47402970/3a607253-acec-450d-937c-18745d954732)
 
 
 ## Deploy to GCP
