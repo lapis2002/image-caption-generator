@@ -44,6 +44,7 @@ helm install -f helm/k8s-monitoring/kube-prometheus-stack.expanded.yaml kube-pro
 
 * **Update Cluster IP to `etc/hosts`**
   Add the Cluster IP to `ect/hosts`, then Grafana can be accessed at `icg.monitoring.com/grafana`
+  ![grafana_dashboard](assets/images/Screenshot%20from%202023-11-14%2023-42-33.png)
 
 ## CI/CD with Jenkins in GCE
 
@@ -131,3 +132,13 @@ ansible-playbook ansible/playbooks/create_compute_instance.yaml
             server: KUBERNETES_URL
       ```
     ![K8s Cloud Jenkins](assets/images/Screenshot%20from%202023-11-14%2018-10-57.png)
+
+* **Build**
+  - When there's new push/pull request, it will build and push the new version of image to DockerHub, then deploy the application with the latest image from DockerHub to GKE cluster.
+  ![build](assets/images/Screenshot%20from%202023-11-14%2018-17-58.png)
+
+## Demo
+
+### API
+
+### Grafana

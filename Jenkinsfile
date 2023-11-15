@@ -39,7 +39,7 @@ pipeline {
                 kubernetes {
                     containerTemplate {
                         name 'helm' // Name of the container to be used for helm upgrade
-                        image 'fullstackdatascience/jenkins-k8s:lts' // The image containing helm
+                        image 'hduong202/jenkins-k8s:latest' // The image containing helm
                     }
                 }
             }
