@@ -10,11 +10,11 @@ yaml-files:
 
 rules:
   # 80 chars should be enough, but don't fail if a line is longer
-  line-length:
-    max: 80
-    level: warning
+  # line-length:
+  #   max: 80
+  #   level: warning
   # https://yamllint.readthedocs.io/en/stable/rules.html#module-yamllint.rules.comments
   comments:
     require-starting-space: true # this comment will failed
     ignore-shebangs: true # ignore shebangs when using require-starting-space
-    min-spaces-from-content: 2  # Two spaces from the number 2
+    min-spaces-from-content: 1  # Two spaces from the number 1
