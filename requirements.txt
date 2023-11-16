@@ -2,7 +2,9 @@ fastapi==0.103.1
 loguru==0.7.2
 numpy==1.26.0
 pillow==10.0.1
+pre-commit==3.5.0
 python-multipart==0.0.6
 transformers==4.34.0
 uvicorn[standard]==0.23.2
 websockets==11.0.3
+yamllint==1.33
