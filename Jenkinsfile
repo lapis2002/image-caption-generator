@@ -14,12 +14,6 @@ pipeline {
     }
 
     stages {
-        // stage('Test') {
-        //     steps {
-        //         echo 'Testing model correctness..'
-        //     }
-        // }
-
         stage('Build') {
             steps {
                 script {

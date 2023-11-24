@@ -1,5 +1,6 @@
 ## How-to Guide
 ### 1. Install prerequisites
+- python 3.10
 ```shell
 pip install -r requirements.txt
 ```

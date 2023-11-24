@@ -13,6 +13,17 @@
 ### Monitoring in Grafana
 [Screencast from 2023-11-14 11:31:09 PM.webm](https://github.com/lapis2002/image-caption-generator/assets/47402970/3a607253-acec-450d-937c-18745d954732)
 
+## Run Locally
+### Install prerequisites
+- python 3.10
+```shell
+pip install -r requirements.txt
+```
+### Connect
+```
+uvicorn main:app --host 0.0.0.0 --port 30000
+```
+Then, you can try the API at `localhost:30000/docs`.
 
 ## Deploy to GCP
 
@@ -76,11 +87,15 @@
 ### Prometheus + Grafana
 
 #### Install [kube-prometheus-stack](https://github.com/prometheus-community/helm-charts/tree/main/charts/kube-prometheus-stack)
+
 * **Switch to `monitoring` namespace**
   ```
   kubens monitoring
   ```
-* **Get Helm Repository Info**
+  
+- `kube-premetheus-stack` is downloaded from `prometheus-community` ([link](https://github.com/prometheus-community/helm-charts/tree/main/charts/kube-prometheus-stack)).
+
+  * **Get Helm Repository Info (Optional)**
   ```sh
   helm repo add prometheus-community https://prometheus-community.github.io/helm-charts
   helm repo update
@@ -88,25 +103,29 @@
 * **Exposing monitoring applications at web context**
   - To expose Prometheus, AlertManager, and Grafana at the same domain with different web contexts, we need to overwrite the default [`values.yaml`](https://github.com/prometheus-community/helm-charts/blob/main/charts/kube-prometheus-stack/values.yaml) with our custom file `kube-prometheus-stack.expanded.yaml` ([source](https://fabianlee.org/2022/07/02/prometheus-exposing-prometheus-grafana-as-ingress-for-kube-prometheus-stack/)).
   ```yaml
-  grafana:
-    env:
-      GF_SERVER_ROOT_URL: http://icg.monitoring.com/grafana
-      GF_SERVER_SERVE_FROM_SUB_PATH: 'true'
-    # username is 'admin'
-    adminPassword: prom-operator
-    ingress:
-      enabled: true
-      annotations:
-        kubernetes.io/ingress.class: nginx
-        nginx.ingress.kubernetes.io/rewrite-target: /$2
-      hosts: ['icg.monitoring.com']
-      path: "/grafana"
-  ``` 
+    grafana:
+      env:
+        GF_SERVER_ROOT_URL: http://icg.monitoring.com/grafana
+        GF_SERVER_SERVE_FROM_SUB_PATH: 'true'
+      # username is 'admin'
+      adminPassword: prom-operator
+      ingress:
+        enabled: true
+        annotations:
+          kubernetes.io/ingress.class: nginx
+          nginx.ingress.kubernetes.io/rewrite-target: /$2
+        hosts: ['icg.monitoring.com']
+        path: "/grafana"
+    ``` 
 * **Install Helm Chart**
   - Install `kube-prometheus-stack` and overwrite with our custom file:
-  ```sh
-  helm install -f helm/k8s-monitoring/kube-prometheus-stack.expanded.yaml kube-prometheus-stack prometheus-community/kube-prometheus-stack
-  ```
+    ```
+    helm upgrade --install -f helm/k8s-monitoring/kube-prometheus-stack.expanded.yaml kube-prometheus-stack helm_charts/k8s-monitoring/kube-prometheus-stack -n monitoring
+    ```
+    - Or if we use helm charts from `prometheus-community`
+    ```sh
+    helm install -f helm/k8s-monitoring/kube-prometheus-stack.expanded.yaml kube-prometheus-stack prometheus-community/kube-prometheus-stack -n monitoring
+    ```
 
 * **Add Domain Name of the Cluster IP to `/etc/hosts`**
   - Add the Cluster IP to `/ect/hosts`
